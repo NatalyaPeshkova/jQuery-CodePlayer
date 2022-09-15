@@ -4,9 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script type="text/javascript" src="./jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="./jQueryUI/jquery-ui.js"></script>
+    <link href="./jQueryUI/jquery-ui.css" rel="stylesheet">
+    <title> jQuery-CodePlayer </title>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        #header{
+            background-color: #178e8e;
+            height: 30px;
+            padding: 5px;
+        }
+        #logo{
+            float: left;
+            font-weight: bold;
+            font-size: 120%;
+            padding: 3px 5px;
+        }
+        #buttonContainer{
+            width: 300px;
+            margin: 0 auto;
+        }
+        .toggleButton{
+            float: left;
+            border: 1px solid black;
+            border-right: none;
+            padding: 4px;
+            font-size: 90%;
+        }
+        #html{
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+        #output{
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-right: 1px solid black;
+        }
+
+        .active{
+            background-color: #E8F2FF;
+        }
+
+        .highlitedButton{
+            background-color: grey;
+        }
+
+    </style>
 </head>
+
 <body>
-    
+    <div id="header" class="header">
+        <div id="logo" class="logo"> Code Player </div>
+        
+        <div id="buttonContainer">
+            <div class="toggleButton active" id="html"> HTML </div>
+            <div class="toggleButton" id="css"> CSS </div>
+            <div class="toggleButton" id="js"> JS </div>
+            <div class="toggleButton active" id="output"> OutPut </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(".toggleButton").hover(function(){
+            $(this).addClass("highlitedButton");
+        }, function(){
+            $(this).removeClass("highlitedButton");
+        })
+    </script>
 </body>
 </html>
