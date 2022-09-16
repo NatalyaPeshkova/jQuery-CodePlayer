@@ -54,11 +54,27 @@
             background-color: grey;
         }
 
+        textarea{
+            resize: none;
+            padding: 0;
+            border-top: none;
+            border: solid 1px gray;
+        }
+
+        .panel{
+            float: left;
+            width: 50%;
+        }
+
+        iframe{
+            border: none;
+        }
+
     </style>
 </head>
 
 <body>
-    <div id="header" class="header">
+    <div id="header" class="header" id="header">
         <div id="logo" class="logo"> Code Player </div>
         
         <div id="buttonContainer">
@@ -69,13 +85,36 @@
         </div>
 
     </div>
+    <div class="bodyContainer">
+        <textarea id="htmlPanel" class="panel"> hello word! </textarea>
+        <textarea id="cssPanel" class="panel"> hello css! </textarea>
+        <textarea id="jsPanel" class="panel"> hello js! </textarea>
+        <iframe id="outputPanel" class="panel"></iframe>
+    </div>
 
     <script type="text/javascript">
+        // при наведении на кнопку верхнего меню она меняет цвет. когда мышь
+        // убираем, цвет возвращается 
         $(".toggleButton").hover(function(){
             $(this).addClass("highlitedButton");
         }, function(){
             $(this).removeClass("highlitedButton");
         })
+
+        // функция добавляет/убирает класс при клике 
+        $(".toggleButton").click(function(){
+            $(this).toggleClass("active");
+            $(this).removeClass("highlitedButton");
+        });
+
+        $(".panel").height($(window).height() - $("#header").height() - 20);
+        $(".panel").width(($(window).width() / 2) - 15);
+        $("iframe").contents().find("html").html($("#htmlPanel").val());
+
+        $("textarea").on('change keyup paste', function() {
+            $("iframe").contents().find("html").html($("#htmlPanel").val());
+        });
+
     </script>
 </body>
 </html>
